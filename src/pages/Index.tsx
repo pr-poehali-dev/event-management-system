@@ -208,36 +208,22 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-accent to-background">
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center rotate-12 hover:rotate-0 transition-transform duration-300">
-                <Icon name="Ticket" size={24} className="text-primary-foreground -rotate-12" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  EventHub
-                </h1>
-                <p className="text-xs text-muted-foreground">Билеты на лучшие события</p>
-              </div>
-            </div>
-
-            <Button 
-              onClick={() => setIsCartOpen(true)}
-              variant="outline"
-              className="relative hover:scale-105 transition-transform"
-            >
-              <Icon name="ShoppingCart" size={20} />
-              {getTotalSeats() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground w-6 h-6 rounded-full text-xs flex items-center justify-center font-bold animate-scale-in">
-                  {getTotalSeats()}
-                </span>
-              )}
-            </Button>
-          </div>
+      <div className="container mx-auto px-4 pt-4 pb-2">
+        <div className="flex justify-end">
+          <Button 
+            onClick={() => setIsCartOpen(true)}
+            variant="outline"
+            className="relative hover:scale-105 transition-transform"
+          >
+            <Icon name="ShoppingCart" size={20} />
+            {getTotalSeats() > 0 && (
+              <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground w-6 h-6 rounded-full text-xs flex items-center justify-center font-bold animate-scale-in">
+                {getTotalSeats()}
+              </span>
+            )}
+          </Button>
         </div>
-      </header>
+      </div>
 
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12 animate-fade-in">
