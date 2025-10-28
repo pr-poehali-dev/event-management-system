@@ -9,12 +9,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { to: '/', label: 'Главная', icon: 'Home' },
-    { to: '/about', label: 'О нас', icon: 'Info' },
-    { to: '/register', label: 'Регистрация', icon: 'UserPlus' },
+    { to: '/', label: 'Расписание', icon: 'Calendar' },
+    { to: '/about', label: 'О студии', icon: 'Heart' },
+    { to: '/register', label: 'Запись', icon: 'UserPlus' },
     { to: '/faq', label: 'FAQ', icon: 'HelpCircle' },
     { to: '/contacts', label: 'Контакты', icon: 'Mail' },
-    { to: '/account', label: 'Кабинет', icon: 'User' }
+    { to: '/account', label: 'Профиль', icon: 'User' }
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -24,14 +24,14 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center rotate-12 group-hover:rotate-0 transition-transform duration-300">
-              <Icon name="Ticket" size={24} className="text-primary-foreground -rotate-12" />
+            <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Icon name="Music" size={28} className="text-primary-foreground" />
             </div>
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                EventHub
+                DanceFlow
               </h1>
-              <p className="text-xs text-muted-foreground">Билеты на события</p>
+              <p className="text-xs text-muted-foreground">Танцевальная студия</p>
             </div>
           </Link>
 

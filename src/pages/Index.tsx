@@ -42,77 +42,77 @@ const Index = () => {
   const events: Event[] = [
     {
       id: '1',
-      title: 'Концерт симфонического оркестра',
+      title: 'Hip-Hop для начинающих',
       date: '15 декабря 2024',
       time: '19:00',
-      venue: 'Концертный зал им. Чайковского',
-      price: 2500,
-      category: 'Музыка',
+      venue: 'Студия DanceFlow, зал 1',
+      price: 1200,
+      category: 'Hip-Hop',
       image: '/placeholder.svg',
-      availableSeats: 120
+      availableSeats: 15
     },
     {
       id: '2',
-      title: 'Stand-up шоу: Вечер юмора',
+      title: 'Contemporary для продолжающих',
       date: '20 декабря 2024',
       time: '20:00',
-      venue: 'Театр комедии',
+      venue: 'Студия DanceFlow, зал 2',
       price: 1500,
-      category: 'Развлечения',
+      category: 'Contemporary',
       image: '/placeholder.svg',
-      availableSeats: 80
+      availableSeats: 12
     },
     {
       id: '3',
-      title: 'Мастер-класс по дизайну',
+      title: 'Latina Solo: Bachata',
       date: '25 декабря 2024',
-      time: '14:00',
-      venue: 'Креативное пространство "Точка"',
-      price: 3000,
-      category: 'Образование',
+      time: '18:30',
+      venue: 'Студия DanceFlow, большой зал',
+      price: 1300,
+      category: 'Latina',
       image: '/placeholder.svg',
-      availableSeats: 50
+      availableSeats: 20
     },
     {
       id: '4',
-      title: 'Джазовый вечер',
+      title: 'Breaking: Основы',
       date: '28 декабря 2024',
-      time: '21:00',
-      venue: 'Джаз-клуб "Blue Note"',
-      price: 1800,
-      category: 'Музыка',
+      time: '17:00',
+      venue: 'Студия DanceFlow, зал 1',
+      price: 1400,
+      category: 'Breaking',
       image: '/placeholder.svg',
-      availableSeats: 60
+      availableSeats: 10
     },
     {
       id: '5',
-      title: 'Театральная постановка "Гамлет"',
+      title: 'Vogue Femme: Choreo',
       date: '5 января 2025',
-      time: '18:00',
-      venue: 'Государственный драматический театр',
-      price: 2200,
-      category: 'Театр',
+      time: '19:30',
+      venue: 'Студия DanceFlow, зал 2',
+      price: 1600,
+      category: 'Vogue',
       image: '/placeholder.svg',
-      availableSeats: 150
+      availableSeats: 15
     },
     {
       id: '6',
-      title: 'Фестиваль электронной музыки',
+      title: 'Jazz Funk: Интенсив',
       date: '10 января 2025',
-      time: '22:00',
-      venue: 'Клуб "Космонавт"',
-      price: 2000,
-      category: 'Музыка',
+      time: '20:30',
+      venue: 'Студия DanceFlow, большой зал',
+      price: 1500,
+      category: 'Jazz Funk',
       image: '/placeholder.svg',
-      availableSeats: 200
+      availableSeats: 18
     }
   ];
 
   const generateSeats = (eventId: string): Seat[] => {
     const seatLayout: Seat[] = [];
-    const rows = 8;
-    const seatsPerRow = 12;
-    const bookedSeats = new Set(['1-5', '2-6', '3-7', '4-8']);
+    const rows = 4;
+    const seatsPerRow = 5;
+    const bookedSeats = new Set(['1-2', '2-3']);
 
     for (let row = 1; row <= rows; row++) {
       for (let seat = 1; seat <= seatsPerRow; seat++) {
@@ -122,7 +122,7 @@ const Index = () => {
           row,
           number: seat,
           status: bookedSeats.has(seatId) ? 'booked' : 'available',
-          price: row <= 3 ? 3000 : row <= 5 ? 2500 : 2000
+          price: 1500
         });
       }
     }
@@ -228,19 +228,20 @@ const Index = () => {
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-            Предстоящие события
+            Расписание занятий
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Выберите место и забронируйте билет на любимое мероприятие
+            Выберите направление и забронируйте место в группе
           </p>
         </div>
 
         <Tabs defaultValue="all" className="mb-8">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-4">
+          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5">
             <TabsTrigger value="all">Все</TabsTrigger>
-            <TabsTrigger value="music">Музыка</TabsTrigger>
-            <TabsTrigger value="theater">Театр</TabsTrigger>
-            <TabsTrigger value="education">Обучение</TabsTrigger>
+            <TabsTrigger value="hiphop">Hip-Hop</TabsTrigger>
+            <TabsTrigger value="contemporary">Contemporary</TabsTrigger>
+            <TabsTrigger value="latina">Latina</TabsTrigger>
+            <TabsTrigger value="other">Другие</TabsTrigger>
           </TabsList>
         </Tabs>
 
@@ -260,7 +261,7 @@ const Index = () => {
                   </Badge>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Icon name="Calendar" size={64} className="text-primary/30 group-hover:scale-110 transition-transform" />
+                  <Icon name="Music" size={64} className="text-primary/30 group-hover:scale-110 transition-transform" />
                 </div>
               </div>
               <CardContent className="p-6">
@@ -286,7 +287,7 @@ const Index = () => {
                     от {event.price.toLocaleString()} ₽
                   </span>
                   <Button size="sm" className="group-hover:scale-110 transition-transform">
-                    Выбрать места
+                    Записаться
                     <Icon name="ArrowRight" size={16} className="ml-2" />
                   </Button>
                 </div>
@@ -331,9 +332,9 @@ const Index = () => {
             </div>
 
             <div className="mb-4 text-center">
-              <div className="inline-block bg-muted px-8 py-2 rounded-t-full">
-                <Icon name="Monitor" size={24} className="text-muted-foreground" />
-                <p className="text-sm font-medium mt-1">СЦЕНА</p>
+              <div className="inline-block bg-gradient-to-r from-primary/20 to-secondary/20 px-8 py-3 rounded-2xl border-2 border-primary/30">
+                <Icon name="Music" size={32} className="text-primary mx-auto mb-1" />
+                <p className="text-sm font-bold text-primary">ЗЕРКАЛО</p>
               </div>
             </div>
 
